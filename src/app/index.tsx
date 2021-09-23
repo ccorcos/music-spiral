@@ -5,7 +5,7 @@ import { maj7 } from "./music"
 
 const viewSize = 400
 
-const chord = maj7
+const chord = [...maj7, 14, 16]
 
 const padding = 2
 const numberOfNotes = 6 * 12 + 1
