@@ -10,7 +10,7 @@ const chord = [
 	5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
 ]
 
-const padding = 0
+const padding = 2
 const numberOfNotes = 6 * 12 + 1
 const maxBallRadius = 18
 const minBallRadius = 3
@@ -21,12 +21,10 @@ function radius(i) {
 }
 
 // Distance to the first note.
-const d0 = ((maxBallRadius * 24) / 2 / Math.PI) * 0.8
+const d0 = (maxBallRadius * 24) / 2 / Math.PI + padding
 
 // Distance between d0 and d12
 const g0 = radius(0) + radius(12) + padding
-
-// Tell Sean: error in my previous code is that g0 is the only g that matters.
 
 function distance(i) {
 	const offset = i % 12
@@ -35,9 +33,10 @@ function distance(i) {
 	// Distance to the inner most circle for this offset.
 	const inner = d0 + (offset * g0) / 12
 
+	// For each octave, add the radius and the padding.
 	let dist = inner
-	for (let j = 0; j < octave; j++) {
-		dist += radius(j * 12 + offset) + radius((j + 1) * 12 + offset) + padding
+	for (let o = 0; o < octave; o++) {
+		dist += radius(o * 12 + offset) + radius((o + 1) * 12 + offset) + padding
 	}
 
 	return dist
