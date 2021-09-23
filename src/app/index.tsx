@@ -1,14 +1,11 @@
 import { range } from "lodash"
 import React from "react"
 import ReactDOM from "react-dom"
+import { maj7 } from "./music"
 
 const viewSize = 400
 
-const chord = [
-	// 2,
-	// 3,
-	5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
-]
+const chord = maj7
 
 const padding = 2
 const numberOfNotes = 6 * 12 + 1
